@@ -42,6 +42,12 @@ button{padding:14px;border:0;border-radius:9px;font-size:16px;font-weight:bold;c
 <option>Personalizado</option>
 </select>
 
+<label for="modo">Modo de creación</label>
+<select id="modo">
+  <option>Con indicaciones visuales</option>
+  <option>Monólogo narrado</option>
+</select>
+
 <label for="tema">Tema o idea del guion</label>
 <textarea id="tema" placeholder="Escribe aquí la historia o el tema que quieres desarrollar..."></textarea>
 
@@ -138,6 +144,7 @@ async function generarGuiones(){
 
   const datos = {
     tipo: document.getElementById("tipo").value,
+    modo: document.getElementById("modo").value,
     tema: tema,
     duracion: document.getElementById("duracion").value,
     cantidad: document.getElementById("cantidad").value,
