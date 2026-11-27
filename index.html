@@ -1,0 +1,60 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Fábrica de Guiones IA</title>
+<style>
+:root{--bg:#0b1020;--panel:#131b2f;--panel2:#1a2540;--text:#f4f6fb;--muted:#a8b3c9;--accent:#8b7cff;--accent2:#39c6b4;--line:#2b3856}
+*{box-sizing:border-box}body{margin:0;background:radial-gradient(circle at top,#1a2850 0,#0b1020 48%);color:var(--text);font:16px/1.5 system-ui,-apple-system,Segoe UI,sans-serif}
+main{max-width:1050px;margin:auto;padding:26px 16px 60px}.top{display:flex;align-items:center;gap:14px;margin-bottom:22px}.logo{width:52px;height:52px;border-radius:16px;background:linear-gradient(135deg,var(--accent),var(--accent2));display:grid;place-items:center;font-size:26px}.eyebrow{color:var(--accent2);font-size:12px;font-weight:800;letter-spacing:1.6px}.title{font-size:clamp(25px,5vw,38px);font-weight:850;line-height:1.1;margin:2px 0}.sub{color:var(--muted);margin:5px 0 0}
+.layout{display:grid;grid-template-columns: minmax(0,1fr) minmax(0,1.05fr);gap:18px}.card{background:rgba(19,27,47,.94);border:1px solid var(--line);border-radius:20px;padding:20px;box-shadow:0 15px 45px #0003}.card h2{font-size:18px;margin:0 0 16px}.field{margin:13px 0}.field label{display:block;font-size:13px;color:#d5dcef;font-weight:700;margin-bottom:7px}input,select,textarea{width:100%;background:#0c1427;color:var(--text);border:1px solid var(--line);border-radius:11px;padding:12px;font:inherit;outline:none}textarea{min-height:120px;resize:vertical}input:focus,select:focus,textarea:focus{border-color:var(--accent)}.two{display:grid;grid-template-columns:1fr 1fr;gap:10px}.btn{border:0;border-radius:12px;padding:13px 16px;font-weight:800;font-size:15px;cursor:pointer}.primary{width:100%;color:#08111f;background:linear-gradient(100deg,#9b8cff,#4de0c7);margin-top:10px}.secondary{background:var(--panel2);border:1px solid var(--line);color:var(--text)}.actions{display:flex;flex-wrap:wrap;gap:9px;margin-top:12px}.output{white-space:pre-wrap;overflow-wrap:anywhere;background:#0b1325;border:1px solid var(--line);border-radius:13px;padding:15px;min-height:290px;color:#edf1fb}.hint,.status{font-size:12px;color:var(--muted)}.status{margin-top:10px;min-height:20px}.history{margin-top:18px}.history button{display:block;width:100%;text-align:left;margin:7px 0}.empty{color:var(--muted);font-size:14px;text-align:center;padding:80px 10px}.small{font-size:12px;color:var(--muted);margin-top:10px}
+@media(max-width:760px){.layout{grid-template-columns:1fr}.card{padding:16px}.top{align-items:flex-start}.two{grid-template-columns:1fr 1fr}}
+</style>
+</head>
+<body>
+<main>
+<header class="top"><div class="logo">✍️</div><div><div class="eyebrow">TU ESTUDIO CREATIVO</div><div class="title">Fábrica de Guiones IA</div><p class="sub">Convierte cualquier idea en guiones listos para narrar.</p></div></header>
+<div class="layout">
+<section class="card">
+<h2>⚙️ Configura tu guion</h2>
+<div class="field"><label for="tipo">Tipo de contenido</label><select id="tipo">
+<option>Historias de terror con humor</option><option>Motivación</option><option>Reflexiones de amor</option><option>Finanzas personales</option><option>Historias bíblicas</option><option>Noticias</option><option>Carpintería y consejos</option><option>Personalizado</option></select></div>
+<div class="field"><label for="tema">¿De qué quieres que trate?</label><textarea id="tema" placeholder="Ejemplo: Un conductor viaja de noche y encuentra una casa abandonada..."></textarea></div>
+<div class="two">
+<div class="field"><label for="duracion">Duración</label><select id="duracion"><option>30 segundos</option><option selected>60 segundos</option><option>90 segundos</option><option>2 minutos</option><option>3 minutos</option><option>5 minutos</option><option>Personalizada</option></select></div>
+<div class="field"><label for="cantidad">Cantidad de guiones</label><select id="cantidad"><option>1</option><option>3</option><option selected>5</option><option>10</option><option>15</option><option>20</option></select></div>
+</div>
+<div class="two">
+<div class="field"><label for="estilo">Estilo</label><select id="estilo"><option>Viral y atrapante</option><option>Cinematográfico</option><option>Emocional</option><option>Humorístico</option><option>Documental</option><option>Conversacional</option><option>Inspirador</option></select></div>
+<div class="field"><label for="plataforma">Plataforma</label><select id="plataforma"><option>Todas</option><option>YouTube Shorts</option><option>Facebook Reels</option><option>TikTok</option><option>YouTube videos largos</option></select></div>
+</div>
+<div class="two">
+<div class="field"><label for="caracteres">Longitud</label><select id="caracteres"><option>Sin límite</option><option>300 caracteres</option><option>500 caracteres</option><option>800 caracteres</option><option>1000 caracteres</option><option>1500 caracteres</option><option>2000 caracteres</option></select></div>
+<div class="field"><label for="trozos">Dividir en trozos</label><select id="trozos"><option>No dividir</option><option>2 trozos</option><option>3 trozos</option><option>4 trozos</option><option>5 trozos</option><option>6 trozos</option><option>9 trozos</option></select></div>
+</div>
+<button class="btn primary" id="generate">✨ GENERAR GUIONES</button>
+<div class="status" id="status" role="status"></div>
+<p class="small">La generación usa tu clave privada de Gemini configurada en el servidor.</p>
+</section>
+<section class="card">
+<h2>📝 Tus guiones</h2>
+<div id="output" class="output"><div class="empty">Tu próximo guion comienza con una idea.<br>Escríbela y pulsa «Generar guiones».</div></div>
+<div class="actions"><button class="btn secondary" id="copy">Copiar</button><button class="btn secondary" id="download">Descargar TXT</button><button class="btn secondary" id="clear">Limpiar</button></div>
+<div class="history"><h2>🕘 Historial reciente</h2><div id="history" class="hint">Todavía no hay guiones guardados.</div></div>
+</section>
+</div>
+</main>
+<script>
+const $=id=>document.getElementById(id);let currentText="";
+function setStatus(t){$("status").textContent=t}
+function saveHistory(text,topic){let h=JSON.parse(localStorage.getItem("guionHistory")||"[]");h.unshift({text,topic,date:new Date().toLocaleString()});h=h.slice(0,8);localStorage.setItem("guionHistory",JSON.stringify(h));renderHistory()}
+function renderHistory(){let h=JSON.parse(localStorage.getItem("guionHistory")||"[]");$("history").innerHTML="";if(!h.length){$("history").textContent="Todavía no hay guiones guardados.";return}h.forEach((x,i)=>{let b=document.createElement("button");b.className="btn secondary";b.textContent=(x.topic||"Guion")+" · "+x.date;b.onclick=()=>{currentText=x.text;$("output").textContent=x.text};$("history").appendChild(b)})}
+$("generate").onclick=async()=>{let tema=$("tema").value.trim();if(!tema){setStatus("Escribe primero el tema del guion.");$("tema").focus();return}
+$("generate").disabled=true;$("generate").textContent="Generando...";setStatus("La IA está preparando tus guiones. Puede tardar un momento.");
+try{let r=await fetch("/api/generar",{method:"POST",headers:{"Content-Type":"application/json"},body:JSON.stringify({tipo:$("tipo").value,tema,duracion:$("duracion").value,cantidad:$("cantidad").value,estilo:$("estilo").value,plataforma:$("plataforma").value,caracteres:$("caracteres").value,trozos:$("trozos").value})});let d=await r.json();if(!r.ok)throw new Error(d.error||"No se pudo generar.");currentText=d.texto;$("output").textContent=currentText;saveHistory(currentText,tema);setStatus("¡Listo! Tus guiones se generaron correctamente.")}catch(e){setStatus(e.message)}finally{$("generate").disabled=false;$("generate").textContent="✨ GENERAR GUIONES"}};
+$("copy").onclick=async()=>{if(!currentText)return setStatus("Todavía no hay texto para copiar.");try{await navigator.clipboard.writeText(currentText);setStatus("Texto copiado.")}catch(e){setStatus("No se pudo copiar automáticamente; selecciona el texto y cópialo.")}};
+$("download").onclick=()=>{if(!currentText)return setStatus("Todavía no hay texto para descargar.");let a=document.createElement("a");a.href=URL.createObjectURL(new Blob([currentText],{type:"text/plain;charset=utf-8"}));a.download="mis_guiones.txt";a.click();URL.revokeObjectURL(a.href)};
+$("clear").onclick=()=>{currentText="";$("output").textContent="Tu próximo guion comienza con una idea.";setStatus("")};renderHistory();
+</script>
+</body></html>
