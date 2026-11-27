@@ -1,4 +1,3 @@
-
 <!DOCTYPE html>
 <html lang="es">
 <head>
@@ -17,6 +16,7 @@ input,select,textarea{width:100%;padding:13px;border:1px solid #40516a;border-ra
 textarea{min-height:100px;resize:vertical}
 .grid{display:grid;grid-template-columns:1fr 1fr;gap:12px}
 button{padding:14px;border:0;border-radius:9px;font-size:16px;font-weight:bold;cursor:pointer}
+button:disabled{opacity:0.6;cursor:not-allowed}
 .generate{width:100%;margin-top:22px;background:#61e6a5;color:#102018}
 .secondary{background:#34445c;color:white;margin:5px 5px 5px 0}
 #resultado{white-space:pre-wrap;line-height:1.6;background:#101827;padding:15px;border-radius:9px;min-height:80px;overflow-wrap:anywhere}
@@ -26,119 +26,128 @@ button{padding:14px;border:0;border-radius:9px;font-size:16px;font-weight:bold;c
 </head>
 <body>
 <div class="container">
-<h1>🏭 Fábrica de Guiones IA</h1>
-<p class="sub">Crea guiones virales con inteligencia artificial</p>
+  <h1>🏭 Fábrica de Guiones IA</h1>
+  <p class="sub">Crea guiones virales con inteligencia artificial</p>
 
-<div class="panel">
-<label for="tipo">Categoría del guion</label>
-<select id="tipo">
-<option>Terror y humor</option>
-<option>Motivación</option>
-<option>Reflexiones de amor</option>
-<option>Finanzas personales</option>
-<option>Historias bíblicas</option>
-<option>Noticias</option>
-<option>Carpintería</option>
-<option>Personalizado</option>
-</select>
+  <div class="panel">
+    <label for="tipo">Categoría del guion</label>
+    <select id="tipo">
+      <option value="Terror y humor">Terror y humor</option>
+      <option value="Motivación">Motivación</option>
+      <option value="Reflexiones de amor">Reflexiones de amor</option>
+      <option value="Finanzas personales">Finanzas personales</option>
+      <option value="Historias bíblicas">Historias bíblicas</option>
+      <option value="Noticias">Noticias</option>
+      <option value="Carpintería">Carpintería</option>
+      <option value="Personalizado">Personalizado</option>
+    </select>
 
-<label for="modo">Modo de creación</label>
-<select id="modo">
-  <option>Con indicaciones visuales</option>
-  <option>Monólogo narrado</option>
-</select>
+    <label for="modo">Modo de creación</label>
+    <select id="modo">
+      <option value="Con indicaciones visuales">Con indicaciones visuales</option>
+      <option value="Monólogo narrado">Monólogo narrado</option>
+    </select>
 
-<label for="tema">Tema o idea del guion</label>
-<textarea id="tema" placeholder="Escribe aquí la historia o el tema que quieres desarrollar..."></textarea>
+    <label for="tema">Tema o idea del guion</label>
+    <textarea id="tema" placeholder="Escribe aquí la historia o el tema que quieres desarrollar..."></textarea>
 
-<div class="grid">
-<div>
-<label for="duracion">Duración</label>
-<select id="duracion">
-<option>30 segundos</option>
-<option selected>60 segundos</option>
-<option>90 segundos</option>
-<option>2 minutos</option>
-<option>3 minutos</option>
-<option>5 minutos</option>
-</select>
-</div>
-<div>
-<label for="cantidad">Cantidad de guiones</label>
-<select id="cantidad">
-<option>1</option><option>3</option><option>5</option>
-<option>10</option><option>15</option><option>20</option>
-</select>
-</div>
-<div>
-<label for="estilo">Estilo</label>
-<select id="estilo">
-<option>Viral</option>
-<option>Cinematográfico</option>
-<option>Emocional</option>
-<option>Humorístico</option>
-<option>Documental</option>
-<option>Inspirador</option>
-<option>Conversacional</option>
-</select>
-</div>
-<div>
-<label for="plataforma">Plataforma</label>
-<select id="plataforma">
-<option>Todas</option>
-<option>YouTube Shorts</option>
-<option>Facebook Reels</option>
-<option>TikTok</option>
-<option>YouTube videos largos</option>
-</select>
-</div>
-<div>
-<label for="caracteres">Extensión</label>
-<select id="caracteres">
-<option>Sin límite</option>
-<option>300 caracteres</option>
-<option>500 caracteres</option>
-<option>800 caracteres</option>
-<option>1000 caracteres</option>
-<option>1500 caracteres</option>
-<option>2000 caracteres</option>
-</select>
-</div>
-<div>
-<label for="trozos">Dividir en trozos</label>
-<select id="trozos">
-<option>Sin dividir</option>
-<option>2 trozos</option>
-<option>3 trozos</option>
-<option>4 trozos</option>
-<option>5 trozos</option>
-<option>6 trozos</option>
-<option>9 trozos</option>
-</select>
-</div>
-</div>
+    <div class="grid">
+      <div>
+        <label for="duracion">Duración</label>
+        <select id="duracion">
+          <option value="30 segundos">30 segundos</option>
+          <option value="60 segundos" selected>60 segundos</option>
+          <option value="90 segundos">90 segundos</option>
+          <option value="2 minutos">2 minutos</option>
+          <option value="3 minutos">3 minutos</option>
+          <option value="5 minutos">5 minutos</option>
+        </select>
+      </div>
+      <div>
+        <label for="cantidad">Cantidad de guiones</label>
+        <select id="cantidad">
+          <option value="1">1</option>
+          <option value="3">3</option>
+          <option value="5">5</option>
+          <option value="10">10</option>
+          <option value="15">15</option>
+          <option value="20">20</option>
+        </select>
+      </div>
+      <div>
+        <label for="estilo">Estilo</label>
+        <select id="estilo">
+          <option value="Viral">Viral</option>
+          <option value="Cinematográfico">Cinematográfico</option>
+          <option value="Emocional">Emocional</option>
+          <option value="Humorístico">Humorístico</option>
+          <option value="Documental">Documental</option>
+          <option value="Inspirador">Inspirador</option>
+          <option value="Conversacional">Conversacional</option>
+        </select>
+      </div>
+      <div>
+        <label for="plataforma">Plataforma</label>
+        <select id="plataforma">
+          <option value="Todas">Todas</option>
+          <option value="YouTube Shorts">YouTube Shorts</option>
+          <option value="Facebook Reels">Facebook Reels</option>
+          <option value="TikTok">TikTok</option>
+          <option value="YouTube videos largos">YouTube videos largos</option>
+        </select>
+      </div>
+      <div>
+        <label for="caracteres">Extensión</label>
+        <select id="caracteres">
+          <option value="Sin límite">Sin límite</option>
+          <option value="300 caracteres">300 caracteres</option>
+          <option value="500 caracteres">500 caracteres</option>
+          <option value="800 caracteres">800 caracteres</option>
+          <option value="1000 caracteres">1000 caracteres</option>
+          <option value="1500 caracteres">1500 caracteres</option>
+          <option value="2000 caracteres">2000 caracteres</option>
+        </select>
+      </div>
+      <div>
+        <label for="trozos">Dividir en trozos</label>
+        <select id="trozos">
+          <option value="Sin dividir">Sin dividir</option>
+          <option value="2 trozos">2 trozos</option>
+          <option value="3 trozos">3 trozos</option>
+          <option value="4 trozos">4 trozos</option>
+          <option value="5 trozos">5 trozos</option>
+          <option value="6 trozos">6 trozos</option>
+          <option value="9 trozos">9 trozos</option>
+        </select>
+      </div>
+    </div>
 
-<button class="generate" id="generar" onclick="generarGuiones()">✨ GENERAR GUIONES</button>
-<p id="estado"></p>
+    <button class="generate" id="generar" onclick="generarGuiones()">✨ GENERAR GUIONES</button>
+    <p id="estado" aria-live="polite"></p>
 
-<h3>📜 Tus guiones</h3>
-<div id="resultado">Aquí aparecerán los guiones que genere la inteligencia artificial.</div>
-<button class="secondary" onclick="copiar()">📋 Copiar</button>
-<button class="secondary" onclick="descargar()">⬇️ Descargar TXT</button>
-</div>
+    <h3>📜 Tus guiones</h3>
+    <div id="resultado">Aquí aparecerán los guiones que genere la inteligencia artificial.</div>
+    <button class="secondary" id="btn-copiar" onclick="copiar()">📋 Copiar</button>
+    <button class="secondary" id="btn-descargar" onclick="descargar()">⬇️ Descargar TXT</button>
+  </div>
 </div>
 
 <script>
 const API_URL = "https://fabrica-guiones-api.herreraizamar19.workers.dev";
+const MENSAJE_INICIAL = "Aquí aparecerán los guiones que genere la inteligencia artificial.";
+let hayGuionesGenerados = false;
 
-async function generarGuiones(){
+async function generarGuiones() {
   const tema = document.getElementById("tema").value.trim();
   const estado = document.getElementById("estado");
   const boton = document.getElementById("generar");
+  const btnCopiar = document.getElementById("btn-copiar");
+  const btnDescargar = document.getElementById("btn-descargar");
   const resultado = document.getElementById("resultado");
 
-  if(!tema){
+  if (!tema) {
     alert("Primero escribe el tema del guion.");
+    document.getElementById("tema").focus();
     return;
   }
 
@@ -155,53 +164,95 @@ async function generarGuiones(){
   };
 
   boton.disabled = true;
+  btnCopiar.disabled = true;
+  btnDescargar.disabled = true;
   boton.textContent = "GENERANDO...";
   estado.textContent = "⏳ La inteligencia artificial está escribiendo...";
   resultado.textContent = "";
+  hayGuionesGenerados = false;
 
-  try{
-    const respuesta = await fetch(API_URL,{
-      method:"POST",
-      headers:{"Content-Type":"application/json"},
-      body:JSON.stringify(datos)
+  const controller = new AbortController();
+  const timeoutId = setTimeout(() => controller.abort(), 75000);
+
+  try {
+    const respuesta = await fetch(API_URL, {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify(datos),
+      signal: controller.signal
     });
 
-    const contenido = await respuesta.json();
+    const textoCrudo = await respuesta.text();
+    let contenido = {};
 
-    if(!respuesta.ok){
-      throw new Error(contenido.error || "No se pudo generar el guion.");
+    try {
+      contenido = textoCrudo ? JSON.parse(textoCrudo) : {};
+    } catch {
+      throw new Error("El servidor no devolvió un JSON válido.");
     }
 
-    resultado.textContent = contenido.texto || "No se recibió ningún guion.";
+    if (!respuesta.ok) {
+      throw new Error(contenido.error || `Error HTTP ${respuesta.status}`);
+    }
+
+    const textoFinal = (contenido.texto || "").trim();
+    if (!textoFinal) {
+      resultado.textContent = "No se recibió ningún guion.";
+      estado.textContent = "⚠️ La respuesta llegó vacía.";
+      return;
+    }
+
+    resultado.textContent = textoFinal;
+    hayGuionesGenerados = true;
     estado.textContent = "✅ ¡Tus guiones están listos!";
-  }catch(error){
+  } catch (error) {
     estado.textContent = "❌ No se pudo completar la solicitud.";
-    resultado.textContent = "Error: " + error.message;
-  }finally{
+    if (error.name === "AbortError") {
+      resultado.textContent = "Error: La solicitud tardó demasiado tiempo.";
+    } else {
+      resultado.textContent = "Error: " + error.message;
+    }
+  } finally {
+    clearTimeout(timeoutId);
     boton.disabled = false;
+    btnCopiar.disabled = false;
+    btnDescargar.disabled = false;
     boton.textContent = "✨ GENERAR GUIONES";
   }
 }
 
-function copiar(){
-  const texto = document.getElementById("resultado").textContent;
-  if(!texto.trim()){
-    alert("No hay texto para copiar.");
+function copiar() {
+  const texto = document.getElementById("resultado").textContent.trim();
+  if (!hayGuionesGenerados || !texto || texto === MENSAJE_INICIAL) {
+    alert("Primero genera un guion para poder copiarlo.");
     return;
   }
-  navigator.clipboard.writeText(texto)
-    .then(()=>alert("¡Texto copiado!"))
-    .catch(()=>alert("No se pudo copiar. Selecciona el texto manualmente."));
+
+  if (navigator.clipboard && window.isSecureContext) {
+    navigator.clipboard.writeText(texto)
+      .then(() => alert("¡Texto copiado!"))
+      .catch(() => alert("No se pudo copiar. Selecciona el texto manualmente."));
+  } else {
+    alert("No se pudo copiar automáticamente. Selecciona el texto manualmente.");
+  }
 }
 
-function descargar(){
-  const texto = document.getElementById("resultado").textContent;
-  const archivo = new Blob([texto],{type:"text/plain;charset=utf-8"});
+function descargar() {
+  const texto = document.getElementById("resultado").textContent.trim();
+  if (!hayGuionesGenerados || !texto || texto === MENSAJE_INICIAL) {
+    alert("Primero genera un guion para poder descargarlo.");
+    return;
+  }
+
+  const archivo = new Blob([texto], { type: "text/plain;charset=utf-8" });
+  const url = URL.createObjectURL(archivo);
   const enlace = document.createElement("a");
-  enlace.href = URL.createObjectURL(archivo);
+  enlace.href = url;
   enlace.download = "mis-guiones.txt";
+  document.body.appendChild(enlace);
   enlace.click();
-  URL.revokeObjectURL(enlace.href);
+  document.body.removeChild(enlace);
+  setTimeout(() => URL.revokeObjectURL(url), 1000);
 }
 </script>
 </body>
